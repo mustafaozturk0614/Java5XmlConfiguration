@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+<!--    application propertiesden veri alma-->
+    <context:property-placeholder location="application.properties" ></context:property-placeholder>
+    <bean id="notifcation" class="com.bilgeadam.xml.MailRepository" > </bean>
+    <bean id="database" class="com.bilgeadam.xml.databaseornek.MysqlRepository" >
+        <property name="url" value="jdb:mysql"></property>
+        <property name="username" value="${mysqlusername}"></property>
+    </bean>
+    <bean id="dbservice" class="com.bilgeadam.xml.databaseornek.DatabaseService">
+        <constructor-arg ref="database" ></constructor-arg>
+    </bean>
+
+
+</beans>
